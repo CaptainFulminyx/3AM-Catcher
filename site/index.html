@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>3AM Catcher — catch what keeps you up</title>
+<meta name="description" content="The social layer for your 3AM thoughts. Raw, unpolished, real. Capture the idea before morning takes it." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="./style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="glow-top"></div>
+<div class="glow-bottom-right"></div>
+<!-- NAV -->    <nav>
+<a href="#" class="nav-logo">
+<span class="dot">◉</span>
+<span>3am catcher</span>
+</a>
+<span class="nav-time" id="navTime"></span>
+<a href="#waitlist" class="nav-cta">join waitlist</a>
+</nav>
+<!-- HERO -->    <section class="hero">
+
+<h1 class="hero-title">
+your best ideas<br />happen at <span class="accent">3am</span>
+</h1>
+<p class="hero-sub">
+Capture late-night ideas before they vanish — and find people who are awake enough to build them with you by morning.
+</p>
+<div class="email-form-wrap" id="waitlist">
+<!-- TODO: wire form action to your backend / Supabase / Formspree endpoint -->
+<form class="email-form" id="emailForm" action="https://formspree.io/f/mgolddrj"
+method="POST">
+<input
+class="email-input"
+type="email"
+placeholder="you@example.com"
+required
+autocomplete="email"
+id="emailInput"
+/>
+<button class="email-btn" type="submit">notify me</button>
+</form>
+<p class="form-note">
+one email when we launch. nothing else.
+</p>
+<p class="success-msg" id="successMsg">
+🌙 you're in. we'll find you at 3am.
+</p>
+</div>
+
+<div class="hero-proof">
+<div class="proof-avatars">
+<div class="proof-avatar">
+ND
+</div>
+<div class="proof-avatar">
+SS
+</div>
+<div class="proof-avatar">
+PA
+</div>
+<div class="proof-avatar">
+VW
+</div>
+<div class="proof-avatar">
+EM
+</div>
+</div>
+<p class="proof-text">
+<strong>40+ people</strong> already in
+</p>
+</div>
+
+
+<div class="ph">
+🚀 Launching soon on Product Hunt — early users will shape the culture of the platform.
+</div>
+<div class="explainer">
+<h2>Notes + Twitter + a midnight coworking room</h2>
+<p>
+Post your thought. Others react. Conversations form. Projects begin.
+No followers. No clout. Just ideas and the people awake enough to care.
+</p>
+</div>
+</section>
+
+<!-- FEATURES -->    <section class="features-section">
+<h2 class="features-heading">built for the <span style="color:var(--ember)">night mind</span></h2>
+
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon">
+
+</div>
+<div class="feature-title">
+timestamp is identity
+</div>
+<p class="feature-desc">
+The time you posted matters. 3:14 AM is a different mindset than 3 PM.
+</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+
+</div>
+<div class="feature-title">
+raw by design
+</div>
+<p class="feature-desc">
+No filters, no polishing. What you post at night stays honest.
+</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+
+</div>
+<div class="feature-title">
+idea → team
+</div>
+<p class="feature-desc">
+Tag your thought and people can join instantly. Ideas don’t die in Notes anymore.
+</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+
+</div>
+<div class="feature-title">
+morning reflection
+</div>
+<p class="feature-desc">
+If you still care in daylight, mark it. Those ideas rise above the noise.
+</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+
+</div>
+<div class="feature-title">
+the graveyard
+</div>
+<p class="feature-desc">
+Old ideas don't die. They live in a Graveyard where one can revive them. Nothing is wasted.
+</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+
+</div>
+<div class="feature-title">
+no likes
+</div>
+<p class="feature-desc">
+Unlike traditional social media stats, we believe in actual value, just share it.
+</p>
+</div>
+</div>
+
+</section>
+<!-- QUOTE -->    <section class="quote-section">
+<p class="big-quote">
+"what if a journal had a social layer, and it only existed <em>between midnight and 5am </em>"
+</p>
+<p class="quote-sub">
+— the whole vibe, actually
+</p>
+</section>
+<!-- FINAL CTA -->    <section class="final-cta">
+<div class="final-cta-box">
+<h2 class="final-cta-title">you're probably up anyway</h2>
+<p class="final-cta-sub">
+Join the waitlist. We'll let you in when the lights go low.
+</p>
+<form class="email-form" id="emailForm2" action="https://formspree.io/f/mgolddrj"
+method="POST" style="max-width:380px;margin:0 auto;">
+<input
+class="email-input"
+type="email"
+placeholder="you@example.com"
+required
+autocomplete="email"
+id="emailInput2"
+/>
+<button class="email-btn" type="submit">i'm in</button>
+</form>
+<p class="form-note" style="margin-top:12px;">
+no spam. one email when we launch.
+</p>
+<p class="success-msg" id="successMsg2">
+🌙 you're in. we'll find you at 3am.
+</p>
+</div>
+
+</section>
+<!-- FOOTER -->    <footer>
+<span class="footer-logo">◉ 3am catcher</span>
+<span class="footer-copy">© 2025 — made at an unreasonable hour</span>
+</footer>
+<script src="./main.js"></script>
+</body>
+</html>
