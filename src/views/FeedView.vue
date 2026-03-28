@@ -1,8 +1,6 @@
 <template>
-  <div v-for="(post, index) in data" :key="index">
-    <div class="pfp">{{ post.uName.slice(0, 2) }}</div>
-  </div>
+  <Nav />
 </template>
-<script>
-import data from "../data/mockPosts.js";
+<script setup>
+import Nav from "../components/NavBar.vue";
 </script>

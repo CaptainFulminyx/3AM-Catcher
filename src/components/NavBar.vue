@@ -1,85 +1,140 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4"
-       :class="scrolled ? 'bg-night-950/90 backdrop-blur-md border-b border-night-700/40' : 'bg-transparent'">
+  <div class="header-spacer">
+    <header class="floating-header">
+      <nav class="header-container">
+        <div class="header-left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="40"
+            height="40"
+            viewBox="0 0 176.29 414.3"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <g
+              transform="matrix(1, 0, 0, 1, -146.57913208007812, 172.25167846679688)"
+            >
+              <path
+                d="M170.85,-19.8 L240.29,-19.8 L240.29,207.05 L287.86,207.05M287.86,207.05"
+                fill-rule="evenodd"
+                style="
+                  fill: none;
+                  stroke: #000;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 70;
+                "
+              />
+              <path
+                d="M170.85,-19.8 L240.29,-19.8 L240.29,207.05 L287.86,207.05M287.86,207.05"
+                fill-rule="evenodd"
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 20;
+                "
+              />
+              <path
+                d="M265.2,-99.06 L242.85,-137.25 L217.94,-99.06"
+                fill-rule="evenodd"
+                style="
+                  fill: none;
+                  stroke: #000;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 70;
+                "
+              />
 
-    <!-- Logo -->
-    <router-link to="/" class="flex items-center gap-2 group">
-      <span class="text-ember animate-flicker text-lg">◉</span>
-      <span class="font-display font-700 text-mist-bright tracking-tight text-lg group-hover:text-ember transition-colors duration-300">
-        3am
-      </span>
-    </router-link>
+              <path
+                d="M265.2,-99.06 L242.85,-137.25 L217.94,-99.06"
+                fill-rule="evenodd"
+                style="
+                  fill: none;
+                  stroke: #ffff60;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 20;
+                "
+              />
+            </g>
+          </svg>
+          <span class="header-title">{{ title }}</span>
+        </div>
 
-    <!-- Center — current time if it's night -->
-    <div v-if="isNightTime" class="font-mono text-xs text-mist-dim tabular-nums">
-      {{ currentTime }}
-    </div>
-    <div v-else class="font-mono text-xs text-mist-dim/50 tabular-nums">
-      {{ currentTime }} — you're early
-    </div>
-
-    <!-- Right actions -->
-    <div class="flex items-center gap-3">
-      <!-- New thought button -->
-      <button
-        @click="$emit('open-post')"
-        class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-ember/40 text-ember text-xs font-mono hover:bg-ember/10 hover:border-ember transition-all duration-200"
-      >
-        <span class="text-base leading-none">+</span>
-        <span class="hidden sm:inline">thought</span>
-      </button>
-
-      <!-- Profile -->
-      <router-link
-        :to="`/profile/${user.username}`"
-        class="w-8 h-8 rounded-full bg-night-700 border border-night-600 flex items-center justify-center text-xs font-mono text-mist hover:border-ember/60 transition-colors duration-200"
-      >
-        {{ user.initials }}
-      </router-link>
-    </div>
-  </nav>
+        <button
+          class="menu-toggle"
+          @click="$emit('toggle-menu')"
+          aria-label="Open Menu"
+        >
+          <Icon
+            icon="material-symbols:menu-rounded"
+            class="menu-icon"
+            width="40"
+            height="40"
+          />
+        </button>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useAuthStore } from '@/stores/auth.js'
+import { Icon } from "@iconify/vue";
+defineProps({
+  title: {
+    type: String,
+    default: "Idéra",
+  },
+});
 
-defineEmits(['open-post'])
-
-const auth = useAuthStore()
-const user = computed(() => auth.user)
-
-const scrolled = ref(false)
-const currentTime = ref('')
-
-const isNightTime = computed(() => {
-  const h = new Date().getHours()
-  return h >= 22 || h < 6
-})
-
-function updateTime() {
-  const now = new Date()
-  currentTime.value = now.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true,
-  })
-}
-
-function onScroll() {
-  scrolled.value = window.scrollY > 20
-}
-
-let timer
-onMounted(() => {
-  updateTime()
-  timer = setInterval(updateTime, 1000)
-  window.addEventListener('scroll', onScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  clearInterval(timer)
-  window.removeEventListener('scroll', onScroll)
-})
+defineEmits(["toggle-menu"]);
 </script>
+
+<style>
+@import "tailwindcss";
+
+.header-spacer {
+  @apply fixed top-4 z-50 px-4 w-full pointer-events-none;
+}
+
+.floating-header {
+  @apply pointer-events-auto max-w-7xl mx-auto;
+}
+
+.header-container {
+  @apply flex items-center justify-between px-6 py-3;
+  @apply backdrop-blur-md;
+  @apply rounded-2xl shadow-lg shadow-black/5;
+
+  background: var(--bg-color);
+}
+
+.header-left {
+  @apply flex items-center gap-3;
+}
+
+.header-logo {
+  @apply w-8 h-8 text-indigo-600;
+}
+
+.header-title {
+  @apply text-xl font-bold tracking-tight;
+}
+
+.menu-toggle {
+  @apply rounded-lg p-1;
+  transition: all 0.5s;
+}
+
+.menu-toggle:hover {
+  background: #aaa;
+}
+
+.menu-icon {
+  @apply w-8 h-8;
+}
+</style>
