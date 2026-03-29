@@ -98,19 +98,20 @@ defineEmits(["toggle-menu"]);
 @import "tailwindcss";
 
 .header-spacer {
-  @apply fixed top-4 z-50 px-4 w-full pointer-events-none;
+  @apply fixed top-0 z-50 px-4 py-4 w-full h-20 pointer-events-none flex items-center;
+  background: #000;
 }
 
 .floating-header {
-  @apply pointer-events-auto max-w-7xl mx-auto;
+  @apply pointer-events-auto w-full max-w-7xl mx-auto;
 }
 
 .header-container {
-  @apply flex items-center justify-between px-6 py-3;
+  @apply flex items-center justify-between px-3 py-2;
   @apply backdrop-blur-md;
   @apply rounded-2xl shadow-lg shadow-black/5;
 
-  background: var(--bg-color);
+  background: #afd;
 }
 
 .header-left {
@@ -118,7 +119,6 @@ defineEmits(["toggle-menu"]);
 }
 
 .header-logo {
-  @apply w-8 h-8 text-indigo-600;
 }
 
 .header-title {
@@ -130,11 +130,6 @@ defineEmits(["toggle-menu"]);
   transition: all 0.5s;
 }
 
-.menu-toggle:hover {
-  background: #aaa;
-}
-
 .menu-icon {
-  @apply w-8 h-8;
 }
 </style>
