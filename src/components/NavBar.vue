@@ -75,6 +75,7 @@
             class="menu-icon"
             width="40"
             height="40"
+            color="#000"
           />
         </button>
       </nav>
