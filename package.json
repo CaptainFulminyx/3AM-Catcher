@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
-    "@supabase/supabase-js": "^2.97.0",
+    "@supabase/supabase-js": "^2.101.1",
     "@tailwindcss/vite": "^4.2.0",
     "@vueuse/core": "^14.2.1",
     "pinia": "^3.0.4",

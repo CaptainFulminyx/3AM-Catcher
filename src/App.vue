@@ -1,4 +1,23 @@
+<!-- App.vue -->
 <template>
   <RouterView />
 </template>
-<script></script>
+
+<script setup>
+// No need for anything here - router handles everything
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    sans-serif;
+  background: #0a0a0a;
+}
+</style>

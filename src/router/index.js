@@ -1,39 +1,48 @@
+// router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import FeedView from '@/views/FeedView.vue'
-import PostView from '@/views/PostView.vue'
-import ProfileView from '@/views/ProfileView.vue'
-
-const routes = [
-  {
-    path: '/',
-    name: 'feed',
-    component: FeedView,
-  },
-  {
-    path: '/post/:id',
-    name: 'post',
-    component: PostView,
-    props: true,
-  },
-  {
-    path: '/profile/:username',
-    name: 'profile',
-    component: ProfileView,
-    props: true,
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/',
-  },
-]
+import { supabase } from '@/lib/supabase'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) return savedPosition
-    return { top: 0, behavior: 'smooth' }
-  },
+  routes: [
+   // {
+  //    path: '/',
+ //     name: 'home',
+  //    component: () => import('@/views/HomeView.vue'),
+ //     meta: { requiresAuth: true }
+ //   },
+    {
+      path: '/',
+      name: 'auth',
+      component: () => import('@/views/AuthView.vue'),
+      meta: { requiresAuth: false }
+    },
+//    {
+ //     path: '/feed',
+//      name: 'feed',
+//      component: () => import('@/views/FeedView.vue'),
+//      meta: { requiresAuth: true }
+//    }
+  ]
+})
+
+// Navigation guard
+router.beforeEach(async (to, from, next) => {
+  const { data: { session } } = await supabase.auth.getSession()
+  const isAuthenticated = !!session
+  
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next({
+      path: '/auth',
+      query: { redirect: to.fullPath }
+    })
+  } 
+  else if (to.path === '/auth' && isAuthenticated) {
+    next('/')
+  }
+  else {
+    next()
+  }
 })
 
 export default router
